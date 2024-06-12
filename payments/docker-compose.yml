@@ -1,0 +1,15 @@
+version: '3'
+services:
+  payments:
+    container_name: payments
+    build: .
+    ports:
+      - 8084:80
+    labels:
+      - "traefik.http.routers.payments.rule=Host(`payments.localhost`)"
+    networks:
+      - traefik
+
+networks:
+  traefik:
+    external: true
